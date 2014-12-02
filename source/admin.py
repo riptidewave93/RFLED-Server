@@ -6,7 +6,7 @@ import socket
 UDP_IP = '' # Leave empty for Broadcast support
 ADMIN_PORT = 48899
 
-# Local settings, used for app discovery
+# Local settings of your Raspberry Pi, used for app discovery
 INT_IP = '10.0.1.61'
 INT_MAC = '111a02bf232b'
 
@@ -24,9 +24,10 @@ while True:
         # print("admin command: ", str(admindata)) # Debugging
         # If the client app is syncing to a unit
         if str(admindata).find("Link_Wi-Fi") != -1:
-            RETURN = INT_IP + ',' + INT_MAC # Return our IP/MAC 
+            RETURN = INT_IP + ',' + INT_MAC + ',' # Return our IP/MAC 
             # print("admin return: ", RETURN) # Debugging
             adminsock.sendto(bytes(RETURN, "utf-8"),adminaddr) # Send Response
-        adminsock.sendto(bytes('+ok', "utf-8"),adminaddr) # Send OK for each packet we get
+        else:
+            adminsock.sendto(bytes('+ok', "utf-8"),adminaddr) # Send OK for each packet we get
     else:
         break
