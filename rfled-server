@@ -11,14 +11,15 @@
 ### END INIT INFO
 
 N=/etc/init.d/rfled-server
+RFLED_PATH=/usr/local/bin
 
 set -e
 
 case "$1" in
   start)
 	# make sure privileges don't persist across reboots
-	/usr/bin/python3 /usr/local/bin/led.py &
-	/usr/bin/python3 /usr/local/bin/admin.py &
+	/usr/bin/python3 ${RFLED_PATH}/led.py &
+	/usr/bin/python3 ${RFLED_PATH}/admin.py &
 	;;
   stop|reload|restart|force-reload|status)
 	
