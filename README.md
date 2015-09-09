@@ -12,8 +12,9 @@ Install
 Startup Script
 ==============
 
- * Ensure scripts are in /usr/local/bin/
  * Place script into /etc/init.d/
+ * a) Ensure scripts are in /usr/local/bin/ or
+ * b) Adjust path in rfled-server script to path of the scripts
  * Run update-rc.d rfled-server defaults to set up
  
 Running
