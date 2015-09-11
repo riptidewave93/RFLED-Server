@@ -10,6 +10,7 @@ LED_PORT = 8899
 # Serial Settings
 TTL_PORT = "/dev/ttyAMA0"
 TTL_SPEED = 9600
+ser = serial.Serial(TTL_PORT, TTL_SPEED) # Connect to serial
 
 # Create UDP socket, bind to it
 sock = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
@@ -20,6 +21,5 @@ while True:
 
     if data is not None:
         # print("led command: ", str(data)) # Debugging
-        ser = serial.Serial(TTL_PORT, TTL_SPEED) # Connect to serial
         ser.write(data) # Write packet data out
 
