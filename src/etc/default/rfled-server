@@ -1,0 +1,6 @@
+# Default settings for rfled-server. This file is sourced by /bin/sh from
+# /etc/init.d/rfled-server.
+
+# Define any options you want to be used when running. You can run rfled-server -h
+# to get the list of available flags for this service.
+RFLED_OPTS=
