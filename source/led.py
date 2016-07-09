@@ -21,5 +21,4 @@ while True:
 
     if data is not None:
         # print("led command: ", str(data)) # Debugging
-        ser.write(data) # Write packet data out
-
+        ser.write(data[:2]) # Write packet data out (2 bytes only)
