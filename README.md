@@ -1,23 +1,23 @@
 RFLED-Server
-============
+==========
 
-Python Scripts to run UDP servers to emulate a LimitlessLED WiFi Bridge 4.0 unit.
+Golang binary to emulate a LimitlessLED WiFi Bridge 4.0 unit. Note that this is still incomplete!
 
 Install
-=======
+----
+  1. Download the latest release from the [Releases](https://github.com/riptidewave93/RFLED-Server/releases) page
+  2. Install the binary & Start service script
+  3. ?????
+  4. Profit
 
- * Change the variables in both scripts to meet your needs
- * Start the scripts and they will start the UDP listeners
+Build from Source
+----
+  1. `./build.sh`
+  2. Run the binary in ./bin
+  3. ?????
+  4. Profit
 
-Startup Script
-==============
-
- * Place script into /etc/init.d/
- * a) Ensure scripts are in /usr/local/bin/ or
- * b) Adjust path in rfled-server script to path of the scripts
- * Run update-rc.d rfled-server defaults to set up
- 
-Running
-=======
-
- * Run "/etc/init.d/rfled-server start" to start scripts without a restart
+To-Do
+----
+  * Add new init.d startup script to ./src
+  * Add Admin Server process to rfled-server.go
