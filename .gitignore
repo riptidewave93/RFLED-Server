@@ -1,0 +1,4 @@
+bin/*
+pkg
+releases
+src/github.com
