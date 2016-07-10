@@ -8,7 +8,7 @@ import (
         "os/user"
         "strconv"
         "strings"
-        "time"
+        "sync"
         "github.com/tarm/serial"
 )
 
@@ -82,6 +82,8 @@ func adm_server(conn *net.UDPConn, log bool, ip string, mac string) {
 }
 
 func main() {
+        var wg sync.WaitGroup
+
         // Set our UART vars
         comport := flag.String("serial", "/dev/ttyAMA0", "Serial device to use")
         comspeed := flag.Int("baud", 9600, "Serial baudrate")
@@ -181,14 +183,14 @@ func main() {
 
         // Start main app loop!
         applog(false, *debug, false, "rfled-server started!")
-        for {
-                // Function for Admin Server
-                go adm_server(adm_listen, *debug, *ip, mymac)
 
-                // Function for LED Server
-                go led_server(led_listen, *debug, s)
+        // Function for Admin Server
+        wg.Add(1)
+        go adm_server(adm_listen, *debug, *ip, mymac)
 
-                // Sleep so we don't just EAT the CPU
-                time.Sleep(100 * time.Millisecond)
-        }
+        // Function for LED Server
+        wg.Add(1)
+        go led_server(led_listen, *debug, s)
+
+        wg.Wait()
 }
