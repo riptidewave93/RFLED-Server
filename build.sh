@@ -3,6 +3,7 @@
 # Set env vars for building
 export GOPATH=$PWD
 export GOBIN=$PWD/bin
+export GOFLAGS="-s -w"
 
 # Do we even have go installed?
 command -v go >/dev/null 2>&1 || { echo >&2 "I require go but it's not installed.  Aborting."; exit 1; }
@@ -26,11 +27,11 @@ else
 
   # build the things!
   echo "Building amd64..."
-  env GOOS=linux GOARCH=amd64 go build -o $GOBIN/rfled-server-amd64 $PWD/src/rfled-server.go
+  env GOOS=linux GOARCH=amd64 go build -ldflags="$GOFLAGS" -o $GOBIN/rfled-server-amd64 $PWD/src/rfled-server.go
   echo "Building armv6..."
-  env GOOS=linux GOARCH=arm GOARM=6 go build -o $GOBIN/rfled-server-armv6 $PWD/src/rfled-server.go
+  env GOOS=linux GOARCH=arm GOARM=6 go build -ldflags="$GOFLAGS" -o $GOBIN/rfled-server-armv6 $PWD/src/rfled-server.go
   echo "Building armv7..."
-  env GOOS=linux GOARCH=arm GOARM=7 go build -o $GOBIN/rfled-server-armv7 $PWD/src/rfled-server.go
+  env GOOS=linux GOARCH=arm GOARM=7 go build -ldflags="$GOFLAGS" -o $GOBIN/rfled-server-armv7 $PWD/src/rfled-server.go
 
   # We finished!
   if [ $? -eq 0 ]; then
