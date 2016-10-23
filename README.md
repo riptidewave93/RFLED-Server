@@ -21,3 +21,10 @@ Build from Source
   3. Follow the above Install steps with the tar.gz in ./releases for your architecture.
   4. ?????
   5. Profit!
+  
+Other Forks
+----
+
+You may also interested in:
+
+* Updated python fork that supports multiple bridges: [pfink/rfled-server-python](https://github.com/pfink/rfled-server-python)
