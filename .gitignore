@@ -2,3 +2,4 @@ bin/*
 pkg
 releases
 src/github.com
+src/golang.org
